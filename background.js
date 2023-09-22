@@ -3,7 +3,6 @@ const skipAds = (tabId) => {
         target : {tabId: tabId },
         func: () => {
             const $skip_container =  document.getElementsByClassName("video-ads ytp-ad-module")[0] || null;
-            console.log('autoskip_ads', $skip_container);
 
             if($skip_container.length < 1)  return;
             const observer = new MutationObserver(() => {
