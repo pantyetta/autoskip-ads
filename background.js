@@ -4,10 +4,10 @@ const skipAds = (tabId) => {
         func: () => {
             const $skip_container =  document.getElementsByClassName("video-ads ytp-ad-module")[0] || null;
 
-            if($skip_container.length < 1)  return;
+            if($skip_container == null)  return;
             const observer = new MutationObserver(() => {
                 const $skip_button = document.getElementsByClassName('ytp-ad-skip-button ytp-button')[0] || null;
-                if($skip_button < 1)    return;
+                if($skip_button == null)    return;
                 $skip_button.click();
             });
             
