@@ -12,10 +12,10 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v4
             - name: zip output
-              run: zip autoskip_ads_${{github.ref}}.zip *
+              run: zip autoskip_ads_${{github.ref.tags.name}}.zip *
             - name: Create Release
               uses: softprops/action-gh-release@v1
               with:
-                files: autoskip_ads_${{github.ref}}.zip
+                files: autoskip_ads_${{github.ref.tags.name}}.zip
             - name: test
               run: ls
