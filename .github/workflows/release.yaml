@@ -1,0 +1,15 @@
+name: Release build
+
+on:
+    push:
+        tags:
+            - 'v*'
+
+jobs:
+    zipper:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            - name: zip outpu
+              run: zip release *
