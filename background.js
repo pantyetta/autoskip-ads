@@ -15,7 +15,7 @@ const skipAds = (tabId) => {
                 if($skip_container == null)  return;
 
                 const observer = new MutationObserver(() => {
-                    const $skip_button = document.getElementsByClassName('ytp-ad-skip-button ytp-button')[0] || null;
+                    const $skip_button = document.getElementsByClassName('ytp-ad-skip-button-modern ytp-button')[0] || null;
                     if($skip_button == null)    return;
                     $skip_button.click();
                 });
