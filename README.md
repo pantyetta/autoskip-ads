@@ -7,8 +7,8 @@ youtube広告を自動でスキップします．
 
 ## install
 
-### store
-[chromewebstoreからinstall](https://chromewebstore.google.com/detail/auto-skip-ads/bladpfbfkeddfhdojdjcopkejlmgapla)
+### store (推奨)
+[chromewebstoreからinstall](https://chromewebstore.google.com/detail/auto-skip-ads/bladpfbfkeddfhdojdjcopkejlmgapla)からインストール．
 
 ### self
 1. cloneかzipをダウンロードする
