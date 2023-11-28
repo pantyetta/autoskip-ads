@@ -10,18 +10,26 @@ const skipAds = (tabId) => {
             };
 
             const $player = document.getElementById('movie_player');
+            const video = document.querySelector('video');
+
             const playerObserver = new MutationObserver(() => {
                 const $skip_container =  document.getElementsByClassName("video-ads ytp-ad-module")[0] || null;
-                if($skip_container == null)  return;
+                if(!$skip_container.children.length)  {
+                    video.playbackRate = 1;
+                    return;
+                }
+
+                video.playbackRate = 16;
 
                 const observer = new MutationObserver(() => {
                     const $skip_button = document.getElementsByClassName('ytp-ad-skip-button-modern ytp-button')[0] || null;
                     if($skip_button == null)    return;
                     $skip_button.click();
+
+                    observer.disconnect();
                 });
                 
                 observer.observe($skip_container, config);
-                playerObserver.disconnect();
             });
             playerObserver.observe($player, config);
         },
