@@ -1,6 +1,7 @@
 {
     "name": "auto skip ads",
     "version": "1.0.4",
+    "description": "youtube広告をブロックせずにスキップします",
     "manifest_version": 3,
     "background": {
         "service_worker": "background.js"
