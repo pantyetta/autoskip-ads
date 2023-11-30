@@ -1,6 +1,6 @@
 {
     "name": "auto skip ads",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "manifest_version": 3,
     "background": {
         "service_worker": "background.js"
@@ -13,7 +13,8 @@
     "permissions": [
         "activeTab",
         "tabs",
-        "scripting"
+        "scripting",
+        "storage"
     ],
     "host_permissions": [
         "https://www.youtube.com/*",

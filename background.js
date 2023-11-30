@@ -14,17 +14,17 @@ const skipAds = (tabId) => {
 
             const playerObserver = new MutationObserver(() => {
                 const $skip_container =  document.getElementsByClassName("video-ads ytp-ad-module")[0] || null;
-                if(!$skip_container.children.length)  {
-                    video.playbackRate = 1;
-                    return;
-                }
+                if(!$skip_container.children.length)    return;
 
-                video.playbackRate = 16;
+                if(video.currentTime == video.duration)    return;
+
+                video.currentTime = video.duration;
 
                 const observer = new MutationObserver(() => {
                     const $skip_button = document.getElementsByClassName('ytp-ad-skip-button-modern ytp-button')[0] || null;
                     if($skip_button == null)    return;
                     $skip_button.click();
+                    console.log('skip ads click');
 
                     observer.disconnect();
                 });
@@ -37,9 +37,19 @@ const skipAds = (tabId) => {
 }
 
 
+const isEmpty = (obj) => {
+    return !Object.keys(obj).length;
+  }
+
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     const pattern = /^https:\/\/(www\.)?youtube\.com\/.+/
     if(tab.url.match(pattern) && changeInfo.status === 'complete'){
-        skipAds(tabId);
+        chrome.storage.session.get([tabId.toString()]).then((result) => {
+            if(isEmpty(result)){
+                skipAds(tabId);
+            }
+        });
+
+        chrome.storage.session.set({ [tabId]: true });
     }
 })
