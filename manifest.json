@@ -15,7 +15,8 @@
         "activeTab",
         "tabs",
         "scripting",
-        "storage"
+        "storage",
+        "webNavigation"
     ],
     "host_permissions": [
         "https://www.youtube.com/*",
