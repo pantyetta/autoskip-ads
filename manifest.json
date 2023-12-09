@@ -1,6 +1,6 @@
 {
     "name": "auto skip ads",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "youtube広告をブロックせずにスキップします",
     "manifest_version": 3,
     "background": {
@@ -15,7 +15,8 @@
         "activeTab",
         "tabs",
         "scripting",
-        "storage"
+        "storage",
+        "webNavigation"
     ],
     "host_permissions": [
         "https://www.youtube.com/*",
