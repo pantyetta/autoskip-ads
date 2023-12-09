@@ -13,14 +13,12 @@ const skipAds = (tabId) => {
 
             const playerObserver = new MutationObserver(() => {
                 const $skip_container =  document.getElementsByClassName("video-ads ytp-ad-module")[0] || null;
-                console.log("skip container");
                 if($skip_container == null || !$skip_container.children.length)    return;
 
                 const observer = new MutationObserver(() => {
                     const $skip_button = document.getElementsByClassName('ytp-ad-skip-button-modern ytp-button')[0] || null;
                     if($skip_button == null)    return;
                     $skip_button.click();
-                    console.log('skip ads click');
 
                     observer.disconnect();
                 });
@@ -29,7 +27,6 @@ const skipAds = (tabId) => {
                 const video = document.querySelector('video');
                 try {
                     video.currentTime = video.duration;
-                    console.log('skip ads');
                 } catch (error) {}
                 
             });
@@ -46,7 +43,6 @@ const isEmpty = (obj) => {
 chrome.webNavigation.onCommitted.addListener((details) => {
     if (details.transitionType === 'reload') {
         chrome.storage.session.remove([details.tabId.toString()]);
-        console.log("remove script");
     }
 }, {url: [{urlMatches : 'https://www.youtube.com/*'}]});
 
@@ -56,7 +52,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
         chrome.storage.session.get([tabId.toString()]).then((result) => {
             if(isEmpty(result)){
-                console.log("insert script");
                 skipAds(tabId);
             }
         });
