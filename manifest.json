@@ -20,6 +20,8 @@
     ],
     "host_permissions": [
         "https://www.youtube.com/*",
-        "https://youtube.com/*"
+        "https://youtube.com/*",
+        "https://nicovideo.jp/watch/*",
+        "https://www.nicovideo.jp/watch/*"
     ]
 }
