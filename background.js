@@ -63,7 +63,6 @@ const n_skipAds = (tabId) => {
                     const skipButton = document.querySelector("#nv_watch_VideoAdContainer > button") || null;
                     if(!skipButton) return;
                     skipButton.click();
-                    console.log("click")
                     return;
                 }
 
@@ -72,7 +71,6 @@ const n_skipAds = (tabId) => {
 
                 try {
                     video.currentTime = video.duration;
-                    console.log(video.currentTime)
                     skip_enable = false;
                 } catch (error) {}
                 
@@ -109,13 +107,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     }
 
     if(tab.url.match(n_pattern) && changeInfo.status === 'complete'){
-
-        chrome.storage.session.get([tabId.toString()]).then((result) => {
-            if(isEmpty(result)){
-                n_skipAds(tabId);
-            }
-        });
-
-        chrome.storage.session.set({ [tabId]: true });
+        n_skipAds(tabId);
     }
 });
