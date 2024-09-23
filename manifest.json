@@ -1,6 +1,6 @@
 {
     "name": "auto skip ads",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "youtube広告をブロックせずにスキップします",
     "manifest_version": 3,
     "background": {
